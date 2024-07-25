@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AION</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/formstyle.css">
+    <link rel="stylesheet" href="css/prompt-history.css">
+    <link rel="stylesheet" href="css/prompt-panel.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .custom-tooltip {
+            --bs-tooltip-bg:#673FD9;
+            --bs-tooltip-color: white;
+            --bs-tooltip-font-size:1.2rem;
+          }
+    </style>
+</head>
+<body>
+    <div id="container" style="display:none;">       
+        <div id="menu-wrap">
+          <input type="checkbox" class="toggler" />
+          <div class="dots">
+            <div></div>
+          </div>
+          <div class="menu">
+            <div style="width: 100%;">
+              <ul>
+                <li class="li-flex" onclick="opengrid()"><img src="images/Icon1.svg" alt="" ><p class="link">Statistics</p></li>
+                <li class="li-flex"><img src="images/Icon2.svg" alt=""><p href="" class="link">Settings</p></li>
+                <li class="li-flex" onclick="closegrid()"><img src="images/cross.svg" alt="" style="margin-left: 11px;" ><p class="link" id="close-statistics" >Close Panel</p></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="main-col-contain" id="main-col-contain">
+        <div class="columns1" id="columns1">
+            <img src="images/tog.svg" alt="" id="toggle-main" onclick="changeDimension()">
+            
+            <div class="img-icon" id="img-icon">
+                <img src="images/G.png" id="aion-logo" alt="aion logo" onclick="changeDimension()" >
+            </div>
+            <div class="sma">
+                <img src="images/n2.svg" alt="nothing" onclick="changeDimension()">
+                <img src="images/n1.svg" alt="not">
+            </div>
+            <div class="img-span">
+            </div>
+            <div class="andiv">
+                <div class="center-gen" id="center-gen">
+                    <div class="title-text2" id="title-text2">
+                        <img src="images/Vector.svg" alt="Chat"><p class="title-text-gen" id="title-text-gen">Chat Generator</p>
+                    </div>
+                </div>
+            </div>
+            <div class="center-menu">
+                <div class="menu-list-itemz" id="item-1" onmouseover="hover1()" onmouseleave="unhover()" data-bs-toggle="tooltip" 
+                data-bs-placement="right"
+                data-bs-title="Feedback" 
+                data-bs-custom-class="custom-tooltip">
+                    <div class="item-icon"><img src="images/feedback.png" alt="feed" class="img-icon-nav" class="image" class="image2" id="t1"></div>
+                    <div class="item-detail"><p class="item-detail-1" id="tp1">Feedback</p><p class="item-detail-2">16</p></div>
+                </div>
+                <div class="menu-list-itemz" id="item-2"  onmouseover="hover2()" onmouseleave="unhover2()" onclick="openPromptHistory()" data-bs-toggle="tooltip" 
+                data-bs-placement="right"
+                data-bs-title="Prompt Library" 
+                data-bs-custom-class="custom-tooltip">
+                    <div class="item-icon"><img src="images/promptLibrary.png" alt="feed" class="img-icon-nav2" class="image2" id="t2"></div>
+                    <div class="item-detail"><p class="item-detail-1" id="tp2">Prompt Library</p><p class="item-detail-2">16</p></div>
+                </div>
+                <div class="menu-list-itemz" id="item-3"  onmouseover="hover3()" onmouseleave="unhover3()" data-bs-toggle="tooltip" 
+                data-bs-placement="right"
+                data-bs-title="My saves" 
+                data-bs-custom-class="custom-tooltip">
+                    <div class="item-icon"><img src="images/save.png" alt="feed" class="img-icon-nav3" class="image2" id="t3"></div>
+                    <div class="item-detail"><p class="item-detail-1" id="tp3">My Saves</p><p class="item-detail-2">16</p></div>
+                </div>
+                <div class="menu-list-itemz" id="item-4"  onmouseover="hover4()" onmouseleave="unhover4()" data-bs-toggle="tooltip" 
+                data-bs-placement="right"
+                data-bs-title="Favourite" 
+                data-bs-custom-class="custom-tooltip">
+                    <div class="item-icon"><img src="images/favourite.png" alt="feed" class="img-icon-nav4" class="image2" id="t4"> </div>
+                    <div class="item-detail"><p class="item-detail-1" id="tp4">Favourite</p><p class="item-detail-2">16</p></div>
+                </div>
+                <div class="menu-list-itemz" id="item-5"  onmouseover="hover5()" onmouseleave="unhover5()" onclick="openHistory()" data-bs-toggle="tooltip" 
+                data-bs-placement="right"
+                data-bs-title="History" 
+                data-bs-custom-class="custom-tooltip">
+                    <div class="item-icon"><img src="images/history.png" alt="feed" class="img-icon-nav5" class="image2" id="t5"></div>
+                    <div class="item-detail"><p class="item-detail-1" id="tp5">History</p><p class="item-detail-2">16</p></div>
+                </div>
+                <div class="menu-list-itemz" id="item-6"  onmouseover="hover6()" onmouseleave="unhover6()" data-bs-toggle="tooltip" 
+                data-bs-placement="right"
+                data-bs-title="Statistics" 
+                data-bs-custom-class="custom-tooltip">
+                    <div class="item-icon"><img src="images/statistics.png" alt="feed" class="img-icon-nav6" class="image2" id="t6"></div>
+                    <div class="item-detail"><p class="item-detail-1" id="tp6">Statistics</p><p class="item-detail-2">16</p></div>
+                </div>
+                <div class="img-span2">
+                </div>
+                <div class="menu-list-itemz" id="item-7"  onmouseover="hover7()" onmouseleave="unhover7()" data-bs-toggle="tooltip" 
+                data-bs-placement="right"
+                data-bs-title="Settings" 
+                data-bs-custom-class="custom-tooltip">
+                    <div class="item-icon"><img src="images/settings.png" alt="feed" class="img-icon-nav6" class="image2" id="t7"></div>
+                    <div class="item-detail"><p class="item-detail-1" id="tp7">Setting</p><p class="item-detail-2">16</p></div>
+                </div>
+                <div class="menu-list-itemz"  id="last-nav"  onmouseover="hover8()" onmouseleave="unhover8()" data-bs-toggle="tooltip" 
+                data-bs-placement="right"
+                data-bs-title="Logout" 
+                data-bs-custom-class="custom-tooltip">
+                    <div class="item-icon"><img src="images/logout.png" alt="feed" class="img-icon-nav6" class="image2" id="t8"></div>
+                    <div class="item-detail"><p class="item-detail-1" id="tp8">Logout</p><p class="item-detail-2">16</p></div>
+                </div>
+            </div>
+            <div class="coulmn1-last-div" id="coulmn1-last-div">
+                <div class="profile" id="profile">
+                    <div class="version" id="version">
+                        <div class="version-center"><p>Basic</p></div>
+                    </div>
+                    <div class="profwid">
+                        <div class="profile-info">
+                            <div class="profile-img" id="profile-img"><img src="images/profilepic.png" alt="img" id="widthofprof"></div>
+                            <div class="profile-details" id="profile-details">
+                                <p id="profile-name">Vishwanath</p>
+                                <p id="profile-mail">vishwa@developer.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="buttonui" id="buttonui">
+                        <img src="images/Layer_1.svg" alt="" width="24" height="24" class="svg-iconui">
+                        <span class="lableui">Upgrade to Pro</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="columns2" id="columns2">
+            <div class="column2-title">
+                <div class="column-top-items">
+                <div class="column2-title-det"><h2 class="title-text">Chat History</h2></div>
+                <div class="title-number-msg"><p class="flex-title-2">16</p></div>
+                </div>
+                <div class="column-top-items2" onclick="closeHistory()">
+                    <img src="images/cross.svg" alt="none">
+                </div>
+            </div>
+            <span class="border-bottom-title"></span>
+            <div class="search-bar">
+                <div class="box">
+                    <div class="input-box"><input type="text" placeholder="Seach Chat Group" class="input1"></div>
+                    <div class="search-button"><button class="button1"><svg class="center-svg" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_41_1703)">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 14.4761L14.4762 15.9999L10.3401 11.8639C9.2517 12.6258 7.94558 13.0612 6.53061 13.0612C2.93878 13.0612 0 10.1224 0 6.53055C0 2.93871 2.93878 -6.10352e-05 6.53061 -6.10352e-05C10.1224 -6.10352e-05 13.0612 2.93871 13.0612 6.53055C13.0612 7.94552 12.6258 9.25164 11.8639 10.3401L16 14.4761ZM6.53061 2.17681C4.13605 2.17681 2.17687 4.13599 2.17687 6.53055C2.17687 8.92511 4.13605 10.8843 6.53061 10.8843C8.92517 10.8843 10.8844 8.92511 10.8844 6.53055C10.8844 4.13599 8.92517 2.17681 6.53061 2.17681Z" fill="#434F8F" stroke="#D5DAE7"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_41_1703">
+                        <rect width="16" height="16" fill="white"/>
+                        </clipPath>
+                        </defs>
+                        </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <span class="border-bottom-search"></span>
+            <div class="history">
+                <div class="history-1 ">
+                    <div class="history-1-det">
+                        <div class="history-title-time">
+                            <h4 class="history-title-1">Audio generator</h4>
+                            <p class="history-time">Just now</p>
+                        </div>
+                        <div class="history-title-time-sub">
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem, fugit! Voluptatibus dolorem ut adipisci eius facere ducimus qui aperiam eos numquam. Consequuntur quis odit reprehenderit voluptates cumque qui ullam, deserunt, facilis praesentium eos quia nostrum aliquam repellat, velit voluptatibus quibusdam. Cupiditate sapiente maiores architecto rerum reprehenderit, deleniti quaerat accusantium nam autem consequuntur eos error. Accusamus, aliquid sapiente dolore porro omnis qui deserunt repudiandae nulla magni quibusdam officia blanditiis minus mollitia maiores laborum nam tenetur! Maxime, unde tempore minus aspernatur ipsum veniam aperiam eius similique. Reprehenderit eaque commodi ullam error amet velit, ipsum incidunt id saepe? Illo fugit voluptates repellat rem!</p>
+                        </div>
+                        <img src="images/Group 38.svg" alt="#" class="audio-generator"/>
+                    </div>
+                </div>
+                <span class="border-bottom-search"></span>
+                <div class="history-2">
+                    <div class="history-1-det">
+                        <div class="history-title-time">
+                            <h4 class="history-title-2">Ecommerce Website Code</h4>
+                            <p class="history-time-2">Friday 2:20pm</p>
+                        </div>
+                        <div class="history-title-time-paragraph">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error facilis, eum tempora amet enim necessitatibus doloremque explicabo commodi tenetur officia animi molestias pariatur. Minima iusto deserunt ab voluptate natus omnis asperiores reprehenderit, rerum nam sit alias ducimus assumenda culpa eius odio dolor eveniet accusamus quidem doloribus voluptatem ad sapiente. Ipsam doloribus excepturi blanditiis nisi veniam. At dolor nobis rem accusamus quam quae perferendis voluptatum, sit voluptas iusto laborum sequi, provident dolorum iure! Molestiae odio voluptas deserunt eos, earum sit libero quidem dignissimos, corporis iure totam voluptates vel officiis culpa fugit, a modi eaque architecto voluptate corrupti. Doloremque iusto inventore repellat.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <span class="border-bottom-search"></span>
+                <div class="color-bg-grad">
+                    <div class="history-3">
+                        <div class="history-1-det">
+                            <div class="history-title-time">
+                                <h4 class="history-title-2">Design thinking</h4>
+                                <p class="history-time-2">Friday 2:20pm</p>
+                            </div>
+                            <div class="history-title-time-paragraph">
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi vitae aliquam, natus incidunt deleniti laborum, saepe numquam nisi maxime quaerat at dolorum sit ducimus eum tempore quas. Voluptatum voluptatibus, fugiat similique doloremque sed dolore nam cumque dicta officia labore. Molestiae provident earum quasi reiciendis repudiandae veritatis, quos suscipit, quae cum maxime harum nostrum eos dignissimos magni ipsam, illo laborum obcaecati facere facilis quis. Totam maxime eveniet dolor a asperiores deleniti blanditiis, dolorem, recusandae, fugiat iste amet alias harum sint qui facere. Officiis quas consequatur atque ducimus explicabo perspiciatis blanditiis expedita reiciendis, nam excepturi. Alias aperiam fuga, vitae in ex iusto?
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="border-bottom-search"></span>
+                    <div class="history-4">
+                        <div class="history-1-det">
+                            <div class="history-title-time">
+                                <h4 class="history-title-2">Ecommerce Website Code</h4>
+                                <p class="history-time-2">Friday 2:20pm</p>
+                            </div>
+                            <div class="history-title-time-paragraph2">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, facilis nulla placeat quasi fugiat distinctio. Eveniet optio nisi cupiditate? Iure reiciendis adipisci dolore eos fugit vel animi libero ipsum atque amet, dicta cumque? Dignissimos, veniam reiciendis nobis eius natus aspernatur architecto atque magnam cum voluptatibus harum repudiandae, animi ratione maiores id iusto dicta sed debitis. Velit eos odio tenetur ducimus reiciendis quos adipisci maxime nihil laboriosam, libero consequuntur praesentium ad odit sapiente aspernatur illo laborum deserunt labore nostrum neque iusto eius a nesciunt ab? Aliquid ad laborum temporibus praesentium accusamus molestias odio dolorem? Consequatur corrupti possimus pariatur vel illum aliquam.
+                                </p>
+                            </div>
+                            <div class="img-display">
+                                <div class="fleximages"><img src="images/fleximg1.png" alt="" class="fi"></div>
+                                <div class="fleximages"><img src="images/fleximg2.png" alt="" class="fi"></div>
+                                <div class="fleximages"><img src="images/fleximg3.png" alt="" class="fi"></div>
+                                <div class="fleximages"><img src="images/fleximg4.png" alt="" class="fi"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="border-bottom-search"></span>
+                    <div class="history-5">
+                        <div class="history-1-det">
+                            <div class="history-title-time">
+                                <h4 class="history-title-2">Design thinking</h4>
+                                <p class="history-time-2">Friday 2:20pm</p>
+                            </div>
+                            <div class="history-title-time-paragraph" id="mg-bot-para">
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae, id veniam animi deleniti consequuntur nobis alias voluptate repellat, explicabo perspiciatis architecto enim laborum. Inventore corrupti officiis distinctio voluptatibus expedita numquam reprehenderit dolor maxime quibusdam, esse nihil, exercitationem beatae? Amet sunt molestiae recusandae necessitatibus cupiditate alias fugit voluptatum quia architecto voluptate aut hic nemo repellat unde eos sint voluptas, velit corporis? Accusantium facilis beatae iste optio fugit. Veniam, dolorum beatae fugit at debitis error accusantium explicabo cumque saepe est dolores neque rem. Beatae quo repellendus eum, atque iure modi soluta facere, mollitia tempore laborum labore fugit quam nobis ea magni voluptatum. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns3" id="columns3">
+            <div class="chat-window">
+                <div class="column3-title" id="set-an1">
+                    
+                    <div class="img-left">
+                        <img src="images/nn2.svg" alt="" onclick="changeDimension()">
+                    </div>
+                    <div class="divvv1">
+                    <div class="column3-title-det"><h2 class="title-text">New Chat</h2></div>
+                    <div class="title-number-msg2"><p class="flex-title-3">16</p></div>
+                    <div class="phicon">
+                        <img src="images/phicon.svg" alt="">
+                        <h2 class="title-text">AION</h2>
+                    </div>
+                    </div>
+                    <div class="img-right">
+                        <img src="images/nn1.svg" alt="">
+                    </div>
+                    <div class="open-panel" onclick="opengrid()">
+                        <img src="images/arrow.svg" alt="expand" onclick="opengrid()">
+                    </div>
+                </div>
+                <span class="column3-title-bottom"></span>
+                <div class="chat-history-results" id="container-append">
+                    <!-- <div class="crt-msg-bar">
+                        <div class="align-crt">
+                            <div class="aion-icon-crt">
+                                <img src="images/Group 61.png" alt="#"/>
+                            </div>
+                            <div class="aion-result-generated" id="output" >
+                                <div class="bar-para-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam voluptatum necessitatibus consequatur sunt suscipit. Id earum vitae libero porro officiis voluptates dolores quasi, sapiente nisi modi quod eius expedita natus!</div>
+                                <div class="new_tab">
+                                    <table>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Material</th>
+                                            <th>Protection</th>
+                                            <th>Weight</th>
+                                            <th>Stealth</th>
+                                            <th>Encumbrance</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Hero</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td><a href="#" class="table-buttons" id="popdisp">Submit</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Metro</td>
+                                            <td>6</td>
+                                            <td>6</td>
+                                            <td>6</td>
+                                            <td>6</td>
+                                            <td><a href="#" class="table-buttons">Approve</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Volve</td>
+                                            <td>9</td>
+                                            <td>9</td>
+                                            <td>9</td>
+                                            <td>9</td>
+                                            <td><a href="#" class="table-buttons">Submit</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Care</td>
+                                            <td>4</td>
+                                            <td>4</td>
+                                            <td>4</td>
+                                            <td>4</td>
+                                            <td><a href="#" class="table-buttons">Done</a></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="feedbackicons">
+                            <img src="images/like.svg" alt="#" class="feed-back-icon">
+                            <img src="images/dislike.svg" alt="#" class="feed-back-icon">
+                        </div>
+                        <div class="result-act-but">
+                            <div class="but-react">
+                                <button class="but-react-style"><svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 3.66667C1 2.73325 1 2.26654 1.18685 1.91002C1.3512 1.59641 1.61345 1.34144 1.93602 1.18166C2.30272 1 2.78277 1 3.74286 1H6.25714C7.21723 1 7.69728 1 8.06398 1.18166C8.38655 1.34144 8.6488 1.59641 8.81315 1.91002C9 2.26654 9 2.73325 9 3.66667V11L5 8.77778L1 11V3.66667Z" fill="white" stroke="#0F1E46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg> <p class="but-title">Save Question</p> 
+                                </button>
+                            </div>
+                            <div class="but-react">
+                                <button class="but-react-style"><svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 3.66667C1 2.73325 1 2.26654 1.18685 1.91002C1.3512 1.59641 1.61345 1.34144 1.93602 1.18166C2.30272 1 2.78277 1 3.74286 1H6.25714C7.21723 1 7.69728 1 8.06398 1.18166C8.38655 1.34144 8.6488 1.59641 8.81315 1.91002C9 2.26654 9 2.73325 9 3.66667V11L5 8.77778L1 11V3.66667Z" fill="white" stroke="#0F1E46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg> <p class="but-title">Copy Question</p> 
+                                </button>
+                            </div>
+                            <div class="but-react">
+                                <button class="but-react-style"><svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 3.66667C1 2.73325 1 2.26654 1.18685 1.91002C1.3512 1.59641 1.61345 1.34144 1.93602 1.18166C2.30272 1 2.78277 1 3.74286 1H6.25714C7.21723 1 7.69728 1 8.06398 1.18166C8.38655 1.34144 8.6488 1.59641 8.81315 1.91002C9 2.26654 9 2.73325 9 3.66667V11L5 8.77778L1 11V3.66667Z" fill="white" stroke="#0F1E46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg> <p class="but-title">Edit</p> 
+                                </button>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="color-bg-input" id="og">
+                    <div class="options-prompt">
+                        <img src="images/p1.svg" alt="" class="prompt-op-img">
+                        <img src="images/p2.svg" alt="" class="prompt-op-img">
+                        <img src="images/p3.svg" alt="" class="prompt-op-img">
+                        <img src="images/p4.svg" alt="" class="prompt-op-img">
+                    </div>
+                <div class="prompt-send">
+                    <input type="text" class="prompt" placeholder="Ask me anything" id="input-text-prompt">
+                    <button class="send-button" onclick="sendPrompt()"><img src="images/send.svg" alt="#" id="send-request"></button>
+                </div>
+                </div>
+            </div>         
+            <div class="statistics " id="statistic">
+
+                <div class="statistics-part1">
+                    <div class="center-stat">
+                        <div class="statistics-title">Statistics
+                        </div>
+                        <div class="close-stat" onclick="closegrid()">
+                            <img src="images/close.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="pie-holder">
+                        <div class="piechart">
+                            <div class="piechart-inner">
+                                <p>Statistics 1</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pie-holder">
+                        <div class="piechart">
+                            <div class="piechart-inner">
+                                <p>Statistics 2 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="bordersts"></span>
+                <div class="statistics-part2">
+                    <div class="part2-title">
+                        <h2>Quick Settings</h2>
+                    </div>
+                    <div class="range-title">Action 1</div>
+                    <div class="range-flex">
+                        <div class='range'>
+                            <p>0</p><input type="range" min='0' max='100' step='1' id="slider"/><p>100%</p>
+                        </div>
+                        <div class='range'>
+                            <p>0</p><input type="range" min='0' max='100' step='1' id="slider2"/><p>100%</p>
+                        </div>
+                        <div class='range'>
+                            <p>0</p><input type="range" min='0' max='100' step='1' id="slider3"/><p>100%</p>
+                        </div>
+                        <div class='range'>
+                            <p>0</p><input type="range" min='0' max='100' step='1' id="slider4"/><p>100%</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="prompt-history" id="prompt-history"> 
+            <div class="prompt-history-head">
+                <h3>Prompt History</h3>
+                <img src="images/compress.svg" alt="" onclick="closePromptHistory()">
+            </div>
+            <div class="prompt-history-details">
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt1">
+                    <label for="prompt1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt2">
+                    <label for="prompt2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt3">
+                    <label for="prompt3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt4">
+                    <label for="prompt4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt5">
+                    <label for="prompt5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt6">
+                    <label for="prompt6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt7">
+                    <label for="prompt7">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt8">
+                    <label for="prompt8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt9">
+                    <label for="prompt9">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt10">
+                    <label for="prompt10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt11">
+                    <label for="prompt11">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt12">
+                    <label for="prompt12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt13">
+                    <label for="prompt13">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt14">
+                    <label for="prompt14">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt15">
+                    <label for="prompt15">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+                <div class="history-items">
+                    <input type="checkbox" name="" id="prompt16">
+                    <label for="prompt16">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sapiente?</label>
+                </div>
+            </div>
+        </div>
+        <div class="prompt-panel" id="prompt-panel">
+            <div class="panel-row-1">
+                <div class="prompt-heading"><p>Prompt Editor</p></div>
+                <div class="prompt-button"><button>Create New</button></div>
+            </div>
+            <div class="panel-row-2">
+                <div class="container">
+                    <div class="row">
+                      <div class="col-lg-2 col-md-4 col-sm-6 prompt-inputs">
+                        <label for="name">Name</label><br>
+                        <input type="text" id="name" placeholder="first name">
+                      </div>
+                      <div class="col-lg-2 col-md-4 col-sm-6 prompt-inputs">
+                        <label for="name">Version</label><br>
+                        <input type="text" id="name" placeholder="Version">
+                      </div>
+                      <div class="col-lg-2 col-md-4 col-sm-6 prompt-inputs">
+                        <label for="name">Email</label><br>
+                        <input type="email" id="name" placeholder="email">
+                      </div>
+                      <div class="col-lg-2 col-md-4 col-sm-6 prompt-inputs">
+                        <h4>Created on</h4>
+                        <p>16 July 2024 12:33:10</p>
+                      </div>
+                      <div class="col-lg-2 col-md-4 col-sm-6 prompt-inputs">
+                        <h4>Modified on</h4>
+                        <p>16 July 2024 12:33:10</p>
+                      </div>
+                      <div class="col-lg-2 col-md-4 col-sm-6 prompt-inputs"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-row-3">
+                <div class="container">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="prompt-box">
+                          <div class="prompt-box-head">
+                            <h5>Prompt</h5>
+                            <button>Run</button>
+                          </div>
+                          <div class="prompt-msg-head">
+                            <div class="con1"><h6>Message</h6></div>
+                            <div class="con2">
+                                <img src="images/message1.svg" alt="">
+                                <img src="images/message2.svg" alt="">
+                                <img src="images/message3.svg" alt="">
+                            </div>
+                          </div>
+                          <div class="prompt-box-input">
+                            <textarea></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="prompt-response">
+                         <div class="response-row-1">
+                            <h5>Response</h5>
+                        </div>
+                         <div class="response-row-2"></div>
+                         <div class="response-row-3">
+                         <p>Prompt Token : 234</p>
+                         <p>Response Token : 234</p>
+                         </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <form action="" class="table-form" id="table-form">
+        <div class="f-cen">
+          <div class="form-contain1">
+            <h2>Service form details</h2>
+            <img src="images/cross.svg" alt="" id="close-form-1">
+          </div>
+          <div class="form-contain2">
+            <div class="con2-det1">
+              <label for="fname">First name</label>
+              <br>
+              <input type="text" id="fname" placeholder="First name" class="mg-top input-feature"> 
+            </div>
+            <div class="con2-det2">
+              <label for="lname">Last name</label>
+              <br>
+              <input type="text" id="lname" placeholder="Last name" class="mg-top input-feature">
+            </div>
+          </div>
+          <div class="form-contain-3">
+            <label for="email">Email</label>
+            <br>
+            <input type="email" id="email" class="mg-top" placeholder="your@gmail.com">
+          </div> 
+          <div class="form-contain-4">
+            <label for="numbersec">Phone number</label>
+            <br>
+            <div class="merge mg-top">
+              <div class="merge1">
+                <select>
+                  <option value="US">US</option>
+                  <option value="ES">ES</option>
+                  <option value="MR">MR</option>
+                </select>
+              </div>
+              <div class="merge2">
+                <input type="number" placeholder="+1 (555) 000-000">
+              </div>
+            </div>
+          </div>
+        <div class="form-contain-5">
+          <label for="message">Message</label>
+          <br>
+          <textarea id="message" cols="40" rows="4" placeholder="please leave a message" class="mg-top"></textarea>
+        </div>
+        <div class="form-contain-6">
+          <input type="checkbox" id="policies"> 
+          <label for="policies" class="mg-top">You agree to our friendly <a href="#">privacy policy</a></label>
+        </div>
+        <div class="form-contain-7">
+          <button type="submit" id="send-form">Send Message</button>
+        </div>
+        </div>
+    </form>
+    <script src="js/script.js"></script>
+    <script src="js/formscript.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="js/navlay.js"></script>
+    <script src="js/hoverNavElements.js"></script>
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
+</body>
+</html>

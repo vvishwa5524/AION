@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     .box{
+        height: 35px;
+        width: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border: 1px solid #D5DAE7;
+        padding-left: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 5px;
+     }
+     input{
+        border: none;
+        background-color: none;
+        width: 100%;
+        height: 100%;
+     }
+     input:focus{
+       outline: none;
+        background: none;
+     }
+     .input-box{
+        width: 75%;
+        height: 100%;
+        font-size: 10px;
+     }
+     .search-button{
+        width: 20%;
+        height: 80%;
+        background-color: #D5DAE7;
+        border-radius: 5px;
+        position: relative;
+     }
+     button{
+        background: none;
+        border: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+     }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="input-box"><input type="text" placeholder="Seach Chat Group"></div>
+        <div class="search-button"><button><svg class="center-svg" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_41_1703)">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 14.4761L14.4762 15.9999L10.3401 11.8639C9.2517 12.6258 7.94558 13.0612 6.53061 13.0612C2.93878 13.0612 0 10.1224 0 6.53055C0 2.93871 2.93878 -6.10352e-05 6.53061 -6.10352e-05C10.1224 -6.10352e-05 13.0612 2.93871 13.0612 6.53055C13.0612 7.94552 12.6258 9.25164 11.8639 10.3401L16 14.4761ZM6.53061 2.17681C4.13605 2.17681 2.17687 4.13599 2.17687 6.53055C2.17687 8.92511 4.13605 10.8843 6.53061 10.8843C8.92517 10.8843 10.8844 8.92511 10.8844 6.53055C10.8844 4.13599 8.92517 2.17681 6.53061 2.17681Z" fill="#434F8F" stroke="#D5DAE7"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_41_1703">
+            <rect width="16" height="16" fill="white"/>
+            </clipPath>
+            </defs>
+            </svg>
+            </button>
+        </div>
+    </div>
+   
+</body>
+</html>
